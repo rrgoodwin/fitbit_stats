@@ -1,0 +1,17 @@
+GEM
+  remote: https://rubygems.org/
+  specs:
+    faraday (0.13.1)
+      multipart-post (>= 1.2, < 3)
+    fitgem_oauth2 (1.1.2)
+      faraday (~> 0.9)
+    multipart-post (2.0.0)
+
+PLATFORMS
+  ruby
+
+DEPENDENCIES
+  fitgem_oauth2
+
+BUNDLED WITH
+   1.16.0
