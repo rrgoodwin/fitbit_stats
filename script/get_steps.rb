@@ -39,9 +39,9 @@ end
 
 def get_data!(force=false)
   date_range = if force
-    date_range = 3.months.ago.to_date...Date.today
+    date_range = @start_date...Date.today
   else
-    latest_date = DateTime.parse(Dir["#{@filepath}/*"].max.scan(/\d{6}/).first) rescue 3.months.ago.to_datetime # TODO
+    latest_date = DateTime.parse(Dir["#{@filepath}/*"].max.scan(/\d{6}/).first) rescue @start_date # TODO
     date_range = latest_date...Date.today
   end
 

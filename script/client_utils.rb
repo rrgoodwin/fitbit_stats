@@ -5,7 +5,7 @@ require 'rails' # TODO
 # https://dev.fitbit.com/build/reference/web-api/oauth2/
 # https://dev.fitbit.com/apps/oauthinteractivetutorial
 
-
+@start_date = DateTime.parse("171202") # when I got the Charge
 @root_filepath = "/Users/rebeccag/repositories/fitbit_stats"
 
 def get_client
