@@ -37,17 +37,11 @@ end
 
 @client = get_client
 
-def get_data!(force: false)
-  date_range = if force
-    date_range = @start_date...Date.today
-  else
-    latest_date = DateTime.parse(Dir["#{@filepath}/*"].max.scan(/\d{6}/).first) rescue @start_date # TODO
-    date_range = latest_date...Date.today
-  end
-
+def get_data_for_date_range!(date_range)
   date_range.to_a.each do |date|
+    date = date.to_date
     begin
-      if !File.exist?(filename_for_date(date)) || force
+      if !File.exist?(filename_for_date(date)) # || force
         write_file_for_date(date)
       end
     rescue => e
@@ -56,4 +50,17 @@ def get_data!(force: false)
   end
 end
 
-get_data!(force: true)
+def get_data!(force: false)
+  date_range = if force
+    date_range = @start_date...Date.today
+  else
+    latest_date = DateTime.parse(Dir["#{@filepath}/*"].max.scan(/\d{6}/).first) rescue @start_date # TODO
+    date_range = latest_date...Date.today
+  end
+
+  get_data_for_date_range!(date_range)
+end
+
+# get_data_for_date_range!(2.days.ago.to_date..Date.yesterday.to_date) # test just yesterday
+get_data!
+
