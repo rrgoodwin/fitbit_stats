@@ -6,11 +6,11 @@ require_relative 'client_utils'
 
 @filepath = "#{@root_filepath}/data/step_json/"
 
-client = get_client
+@client = get_client
 # refresh_token!(client) # use if my token has expired
 
-hrs = client.intraday_heartrate_time_series(start_date: Date.parse("2018-02-07"), end_date: Date.parse("2018-02-07"), detail_level: "1min", start_time: DateTime.parse("2018-02-07 00:00:00"), end_time: DateTime.parse("2018-02-07 23:59:59"))
-hrs["activities-heart-intraday"]["dataset"].map {|hr| [hr["time"], hr["value"]]}
+# hrs = client.intraday_heartrate_time_series(start_date: Date.parse("2018-02-07"), end_date: Date.parse("2018-02-07"), detail_level: "1min", start_time: DateTime.parse("2018-02-07 00:00:00"), end_time: DateTime.parse("2018-02-07 23:59:59"))
+# hrs["activities-heart-intraday"]["dataset"].map {|hr| [hr["time"], hr["value"]]}
 
 def write_file_for_date(date)
   # date = DateTime.parse(datestring)
@@ -37,7 +37,7 @@ end
 
 @client = get_client
 
-def get_data!(force=false)
+def get_data!(force: false)
   date_range = if force
     date_range = @start_date...Date.today
   else
@@ -56,4 +56,4 @@ def get_data!(force=false)
   end
 end
 
-get_data!
+get_data!(force: true)

@@ -9,7 +9,7 @@ require 'rails' # TODO
 @root_filepath = "/Users/rebeccag/repositories/fitbit_stats"
 
 def get_client
-  secrets = YAML.load(File.read("secrets.yml"))
+  secrets = YAML.load(File.read("#{@root_filepath}/secrets.yml"))
   client = FitgemOauth2::Client.new(
     client_id: secrets[:client_id],
     client_secret: secrets[:client_secret],
