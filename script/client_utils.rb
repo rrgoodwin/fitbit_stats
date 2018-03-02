@@ -18,10 +18,14 @@ end
 
 def refresh_token!(client)
   secrets = YAML.load(File.read("secrets.yml"))
+
   response = client.refresh_access_token(secrets[:refresh_token])
+  puts "response: #{response}"
   new_token = response["access_token"]
+  puts "New token: #{new_token}"
   secrets[:access_token] = new_token
-  File.write("secrets.yml", YAML.dump(secrets))
+  `cp "#{@root_filepath}/secrets.yml" "#{@root_filepath}/secrets.yml.old"`
+  File.write("#{@root_filepath}/secrets.yml", YAML.dump(secrets))
 
   client = get_client
 end
