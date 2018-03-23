@@ -15,14 +15,18 @@ class HeartRateDay
     @json = JSON.parse(File.read(@filename))
   end
 
+  def dataset
+    @json["activities-heart-intraday"]["dataset"]
+  end
+
   def heart_rate_csv
     day = @json["activities-heart"].first["dateTime"]
-    @json["activities-heart-intraday"]["dataset"].map {|hr| "#{day} #{hr["time"]},#{hr["value"]}"}.join("\n")
+    dataset.map {|hr| "#{day} #{hr["time"]},#{hr["value"]}"}.join("\n")
   end
 
   def csv
     day = @json["activities-heart"].first["dateTime"]
-    @json["activities-heart-intraday"]["dataset"].map {|hr| "#{day} #{hr["time"]},#{hr["value"]}"}.join("\n")
+    dataset.map {|hr| "#{day} #{hr["time"]},#{hr["value"]}"}.join("\n")
   end
 
   def filename_root
