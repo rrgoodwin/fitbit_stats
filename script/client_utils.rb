@@ -34,5 +34,5 @@ end
 # authorization url:
 # https://www.fitbit.com/oauth2/authorize?response_type=code&client_id=22CP5N&redirect_uri=https%3A%2F%2Fhr-data.herokuapp.com&scope=activity%20heartrate%20location%20nutrition%20profile%20settings%20sleep%20social%20weight&expires_in=604800
 
-# curl -X POST -i -H 'Authorization: Basic MjJDUDVOOjI4MzkwMDIxMTkzYWQzMDhkY2I1M2ZkYjU4OTFlMzZi' -H 'Content-Type: application/x-www-form-urlencoded' -d "clientId=22CP5N" -d "grant_type=authorization_code" -d "redirect_uri=https%3A%2F%2Fhr-data.herokuapp.com" -d "code=34d80592ab54e96f55d7d5ad754845d388a2346b" https://api.fitbit.com/oauth2/token
+# curl -X POST -i -H 'Authorization: Basic MjJDUDVOOjI4MzkwMDIxMTkzYWQzMDhkY2I1M2ZkYjU4OTFlMzZi' -H 'Content-Type: application/x-www-form-urlencoded' -d "clientId=22CP5N" -d "grant_type=authorization_code" -d "redirect_uri=https%3A%2F%2Fhr-data.herokuapp.com" -d "code=54682a26f3fd034c2c5c444576659cb8f5bb0aff" https://api.fitbit.com/oauth2/token
 

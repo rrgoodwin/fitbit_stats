@@ -62,5 +62,5 @@ def get_data!(force: false)
 end
 
 # get_data_for_date_range!(2.days.ago.to_date..Date.yesterday.to_date) # test just yesterday
-get_data!
+get_data!(force: true)
 
