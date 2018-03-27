@@ -4,7 +4,8 @@ require_relative '../script/get_steps' # TODO consolidate where the boilerplate 
 class StepDay < DayFromJson
 
   def dataset
-    @json["activities-steps-intraday"]["dataset"]
+    @dataset ||= @json["activities-steps-intraday"]["dataset"]
+    @dataset
   end
 
   def csv

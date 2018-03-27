@@ -18,4 +18,17 @@ class DayFromJson
   def filename_root
     @filename.scan(/\d{6}/).first
   end
+
+  def dataset
+    raise "Child class must implement dataset"
+  end
+
+  def dataset_hash
+    dataset.map {|d| [d["time"], d["value"]]}.to_h
+  end
+
+  def max_recorded_time
+    dataset.map {|h| h["time"]}.max
+  end
+
 end

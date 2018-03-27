@@ -1,6 +1,7 @@
 require 'rails' # TODO
+require_relative 'day_from_json'
 
-class HeartRateDay
+class HeartRateDay < DayFromJson
   attr_reader :json, :date
 
   def initialize(date_or_filename)
@@ -16,7 +17,8 @@ class HeartRateDay
   end
 
   def dataset
-    @json["activities-heart-intraday"]["dataset"]
+    @dataset ||= @json["activities-heart-intraday"]["dataset"]
+    @dataset
   end
 
   def heart_rate_csv
