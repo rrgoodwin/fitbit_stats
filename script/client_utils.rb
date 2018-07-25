@@ -7,7 +7,8 @@ require 'rails' # TODO
 # ^ I'm using authorization flow
 
 @start_date = DateTime.parse("171202") # when I got the Charge
-@root_filepath = "/Users/rebeccag/repositories/fitbit_stats"
+# @root_filepath = "/Users/rebeccag/repositories/fitbit_stats" # TODO
+@root_filepath = "/Users/rgoodwin/fitbit_stats"
 
 def get_client
   secrets = YAML.load(File.read("#{@root_filepath}/secrets.yml"))
@@ -29,6 +30,10 @@ def refresh_token!(client)
   File.write("#{@root_filepath}/secrets.yml", YAML.dump(secrets))
 
   client = get_client
+end
+
+def oauth_url(client_id)
+  "https://www.fitbit.com/oauth2/authorize?response_type=code&client_id=#{client_id}&redirect_uri=https%3A%2F%2Fhr-data.herokuapp.com&scope=activity%20heartrate%20location%20nutrition%20profile%20settings%20sleep%20social%20weight&expires_in=604800"
 end
 
 # authorization url:
